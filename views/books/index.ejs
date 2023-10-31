@@ -1,0 +1,48 @@
+<h4 class="text-white"><strong>Books</strong></h4>
+<hr class="text-white">
+<h6 class="text-white text-center"><strong>Search Books</strong></h6>
+<div class="text-center">
+
+  <form class="d-grid justify-content-center align-items-center" action="/books" method="GET">
+    <!-- Title Search -->
+    <div class="form-floating mb-3 text-dark">
+      <input type="text" class="form-control w-100" id="floatingInput" name="title" value="<%= searchOptions.title %>" placeholder="">
+      <label for="floatingInput"><strong>Title</strong></label>
+    </div>
+    <!-- PublishedAfter Search -->
+    <div class="form-floating mb-3 text-dark">
+      <input type="date" class="form-control w-100" id="floatingInput" name="publishedAfter" value="<%= searchOptions.publishedAfter %>" placeholder="">
+      <label for="floatingInput"><strong>Published After</strong></label>
+    </div>
+    <!-- PublishedBefore Search -->
+    <div class="form-floating mb-3 text-dark">
+      <input type="date" class="form-control w-100" id="floatingInput" name="publishedBefore" value="<%= searchOptions.publishedBefore %>" placeholder="">
+      <label for="floatingInput"><strong>Published Before</strong></label>
+    </div>
+
+    <div class="d-block justify-content-center">
+      <button type="submit" class="btn btn-outline-success w-25" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Search">
+        <i class='bx bx-search-alt'></i>
+      </button>
+      <a type="button" class="btn btn-outline-danger w-25" href="/books" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+        <i class='bx bxs-x-circle'></i>
+      </a>
+    </div>
+
+  </form>
+  <br>
+  <!-- Books Search -->
+  <div class="d-start justify-content-grid align-items-grid text-white">
+    <% books.slice(0, Math.max(5, books.length)).forEach(book => { %>
+    <a type="button" href="/books/<%= book.id %>" style="margin: 10px;">
+      <img class="BookImage" height="150" width="100" src="<%= book.coverImagePath %>">
+    </a>
+    <% }) %>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>

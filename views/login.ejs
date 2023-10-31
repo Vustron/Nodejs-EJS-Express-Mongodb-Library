@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login System</title>
+  <!-- PlugIns -->
+  <%- include('plugins/plugins.ejs') %>
+  <!-- PlugIns -->
+</head>
+
+<body class="bg-secondary">
+
+  <div class="container">
+
+    <div class="row justify-content-center mt-2">
+      <div class="col-lg-8">
+
+        <div class="container-fluid bg-dark p-5 rounded ">
+          <div class="text-center">
+            <h4><strong>Log-In</strong></h4>
+            <hr>
+            <form class="d-block justify-content-center align-items-center">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control w-100" id="floatingInput" name="email" placeholder="">
+                <label for="floatingInput">Email</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control w-100" id="floatingInput" name="password" placeholder="">
+                <label for="floatingInput">Password</label>
+              </div>
+              <div class="d-block justify-content-center">
+                <input type="submit" class="btn btn-outline-success w-25" value="Login">
+                <a type="button" class="btn btn-outline-primary w-25" href="/register">Register</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

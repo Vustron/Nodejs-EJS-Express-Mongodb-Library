@@ -1,0 +1,72 @@
+<h4 class="text-white"><strong>Edit Author</strong></h4>
+<hr class="text-white">
+<div class="text-center text-dark">
+  <form class="d-block justify-content-center align-items-center" action="/authors/<%= author.id %>?_method=PUT" method="POST">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control w-100 text-black" id="floatingInputName" name="name" value="<%= author.name %>" placeholder="">
+      <label for="floatingInputName"><strong>Name</strong></label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control w-100" id="floatingInputEmail" name="email" value="<%= author.email %>" placeholder="">
+      <label for="floatingInputEmail"><strong>Email</strong></label>
+    </div>
+    <div class="d-block justify-content-center">
+      <button type="submit" id="updateAuthorButton" class="btn btn-outline-success w-25">Update</button>
+      <a type="button" class="btn btn-outline-danger w-25" href="/authors/<%= author.id%>">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<!-- Edit Author -->
+<script>
+  const authorEditForm = document.querySelector('form');
+  const updateAuthorButton = document.getElementById('updateAuthorButton');
+  const authorId = <%= author.id %>;
+
+  // Add an event listener for form submission
+  authorEditForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    const name = document.querySelector('[name="name"]').value;
+    const email = document.querySelector('[name="email"]').value;
+
+    try {
+      const response = await axios.post(`/authors/${authorId}`, {
+        name: name,
+        email: email,
+      });
+      if (response.data && response.data.success) {
+        Swal.fire({
+          toast: true,
+          icon: 'success',
+          iconColor: '#fff',
+          color: '#fff',
+          title: 'Success',
+          position: 'top-right',
+          background: '#00ff00',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          text: "Author updated successfully!"
+        })
+      } else {
+        console.log(error);
+        Swal.fire({
+          toast: true,
+          icon: 'error',
+          iconColor: '#fff',
+          color: '#fff',
+          title: 'Error',
+          position: 'top-right',
+          background: '#cc0000',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          text: 'Error updating author!'
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+</script>

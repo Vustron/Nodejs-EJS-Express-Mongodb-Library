@@ -1,0 +1,70 @@
+<h4 class="text-white"><strong>Add New Author</strong></h4>
+<hr class="text-white">
+<div class="text-center text-dark">
+  <form class="d-block justify-content-center align-items-center" action="/authors" method="POST" id="authorAddForm">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control w-100" id="floatingInput" name="name" value="<% author.name %>" placeholder="">
+      <label for="floatingInput"><strong>Name</strong></label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" required class="form-control w-100" id="floatingInput" name="email" value="<% author.email %>" placeholder="">
+      <label for="floatingInput"><strong>Email</strong></label>
+    </div>
+    <div class="d-block justify-content-center">
+      <input type="submit" class="btn btn-outline-success w-25" value="Add">
+      <a type="button" class="btn btn-outline-danger w-25" href="/authors">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<!-- Add New Author -->
+<script>
+  const authorAddForm = document.getElementById('authorAddForm');
+  authorAddForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const name = document.querySelector('[name="name"]').value;
+    const email = document.querySelector('[name="email"]').value;
+
+    try {
+      const response = await axios.post('/authors', {
+        name: name,
+        email: email,
+      });
+      if (response.data && response.data.success) {
+        Swal.fire({
+          toast: true,
+          icon: 'success',
+          iconColor: '#fff',
+          color: '#fff',
+          title: 'Success',
+          position: 'top-right',
+          background: '#00ff00',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          text: "Author created successfully!"
+        }).then(() => {
+          window.location.href = `/authors/${response.data.newAuthor}`;
+        })
+      } else {
+        console.log(error)
+        Swal.fire({
+          toast: true,
+          icon: 'error',
+          iconColor: '#fff',
+          color: '#fff',
+          title: 'Error',
+          position: 'top-right',
+          background: '#cc0000',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          text: 'Error creating Author'
+        });
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  });
+</script>

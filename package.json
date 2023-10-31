@@ -1,0 +1,35 @@
+{
+  "name": "node_library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sweetalert2/theme-borderless": "^5.0.15",
+    "animate.css": "^4.1.1",
+    "axios": "^1.6.0",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "filepond": "^4.30.4",
+    "filepond-plugin-file-encode": "^2.1.11",
+    "filepond-plugin-image-preview": "^4.6.11",
+    "filepond-plugin-image-resize": "^2.0.10",
+    "method-override": "^3.0.0",
+    "mongoose": "^7.6.3",
+    "nodemon": "^3.0.1",
+    "sweetalert2": "^11.7.32"
+  },
+  "devDependencies": {
+    "rename-package": "^2.0.2"
+  }
+}

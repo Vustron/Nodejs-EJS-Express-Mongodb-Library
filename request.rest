@@ -1,0 +1,13 @@
+
+GET http://localhost:3000/signup
+
+###
+
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "name": "Jason",
+    "email": "Jason@email.com",
+    "password": "Jason123"
+}
